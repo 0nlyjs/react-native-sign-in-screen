@@ -1,56 +1,59 @@
-# Welcome to your Expo app 👋
+# React Native Sign In Screen 📱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A polished, high-fidelity mobile authentication UI built with **React Native** and **Expo**. This project focuses on recreating a modern, professional design using only core components to maintain a lightweight and highly customizable codebase.
 
-## Get started
+## 🎨 Design Inspiration
+This interface is inspired by the **Osler AI Telehealth App** design on Dribbble.
+[View Design on Dribbble](https://dribbble.com/shots/24783022-osler-AI-Telehealth-Telemedicine-App-Sign-In-Sign-Up-UI)
 
-1. Install dependencies
+## 🚀 Features
+- **App Logo Section**: Custom-built vector logo using core components.
+- **Dynamic Sign In**: Clean layout with email and password fields.
+- **Password Visibility**: Interactive toggle for showing/hiding passwords.
+- **Social Authentication**: Squircle-styled buttons for Google, Facebook, and Instagram.
+- **Navigation Flow**: Fully functional routing between Sign In, Sign Up, and Forgot Password screens using Expo Router.
+- **Form States**: Interactive focus states and basic validation feedback.
+- **Responsive Layout**: Designed to look great on various screen sizes.
 
+## 🛠️ Tech Stack
+- **Framework**: [React Native](https://reactnative.dev/)
+- **Platform**: [Expo](https://expo.dev/) (SDK 55.0.0)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/) (File-based routing)
+- **Icons**: [@expo/vector-icons](https://docs.expo.dev/guides/icons/) (Ionicons & FontAwesome)
+- **Styling**: Standard `StyleSheet` (No UI libraries used)
+
+## 📋 Requirements & Constraints
+- **Core Components Only**: Built strictly using `View`, `Text`, `TextInput`, `TouchableOpacity`, etc.
+- **No UI Libraries**: Zero dependency on libraries like React Native Paper, Elements, or NativeWind to demonstrate core layout mastery.
+- **Accurate Recreation**: Focused on matching typography, spacing, and brand colors from the original Dribbble design.
+
+## ⚙️ Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd react-native-sign-in-screen
+   ```
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Start the development server**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Run on your device**
+   - Download the **Expo Go** app on iOS or Android.
+   - Scan the QR code appearing in your terminal.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📸 Screen Structure
+- `src/app/index.js`: Sign In Screen (Primary)
+- `src/app/signup.js`: Registration Screen
+- `src/app/forgot-password.js`: Password Recovery Selection
+- `src/app/_layout.js`: Global navigation configuration
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+*Built as a technical assignment to demonstrate React Native UI/UX capabilities.*
