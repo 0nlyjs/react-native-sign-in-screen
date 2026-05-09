@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  SafeAreaView,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   ScrollView,
-} from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import { Link, useRouter } from 'expo-router';
+import { Link, useRouter } from "expo-router";
 
-const PRIMARY_GREEN = '#82CD28';
-const BACKGROUND_LIGHT = '#F8F9FA';
-const TEXT_DARK = '#1A1A1A';
-const TEXT_LIGHT = '#7C7C7C';
-const INPUT_BG = '#FFFFFF';
-const BORDER_COLOR = '#E5E7EB';
+const PRIMARY_GREEN = "#82CD28";
+const BACKGROUND_LIGHT = "#F8F9FA";
+const TEXT_DARK = "#1A1A1A";
+const TEXT_LIGHT = "#7C7C7C";
+const INPUT_BG = "#FFFFFF";
+const BORDER_COLOR = "#E5E7EB";
 
 export default function SignInScreen() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const [isEmailFocused, setIsEmailFocused] = useState(false);
@@ -35,10 +35,13 @@ export default function SignInScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
       >
-        <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}
+        >
           {/* Logo Section */}
           <View style={styles.logoContainer}>
             <View style={styles.logoIcon}>
@@ -50,14 +53,26 @@ export default function SignInScreen() {
           {/* Header Section */}
           <View style={styles.headerContainer}>
             <Text style={styles.title}>Sign In</Text>
-            <Text style={styles.subtitle}>Let's experience the joy of telecare AI.</Text>
+            <Text style={styles.subtitle}>
+              Let's experience the joy of telecare AI.
+            </Text>
           </View>
 
           {/* Form Section */}
           <View style={styles.formContainer}>
             <Text style={styles.label}>Email Address</Text>
-            <View style={[styles.inputContainer, (isEmailFocused || email) ? styles.inputActive : null]}>
-              <Ionicons name="mail-outline" size={20} color={(isEmailFocused || email) ? PRIMARY_GREEN : TEXT_LIGHT} style={styles.inputIcon} />
+            <View
+              style={[
+                styles.inputContainer,
+                isEmailFocused || email ? styles.inputActive : null,
+              ]}
+            >
+              <Ionicons
+                name="mail-outline"
+                size={20}
+                color={isEmailFocused || email ? PRIMARY_GREEN : TEXT_LIGHT}
+                style={styles.inputIcon}
+              />
               <TextInput
                 style={styles.input}
                 placeholder="elementary221b@gmail.com"
@@ -70,15 +85,27 @@ export default function SignInScreen() {
                 autoCapitalize="none"
               />
               {email.length > 0 && (
-                <TouchableOpacity onPress={() => setEmail('')}>
+                <TouchableOpacity onPress={() => setEmail("")}>
                   <Ionicons name="close-circle" size={18} color={TEXT_LIGHT} />
                 </TouchableOpacity>
               )}
             </View>
 
             <Text style={styles.label}>Password</Text>
-            <View style={[styles.inputContainer, (isPasswordFocused || password) ? styles.inputActive : null]}>
-              <Ionicons name="lock-closed-outline" size={20} color={(isPasswordFocused || password) ? PRIMARY_GREEN : TEXT_LIGHT} style={styles.inputIcon} />
+            <View
+              style={[
+                styles.inputContainer,
+                isPasswordFocused || password ? styles.inputActive : null,
+              ]}
+            >
+              <Ionicons
+                name="lock-closed-outline"
+                size={20}
+                color={
+                  isPasswordFocused || password ? PRIMARY_GREEN : TEXT_LIGHT
+                }
+                style={styles.inputIcon}
+              />
               <TextInput
                 style={styles.input}
                 placeholder="Enter your password..."
@@ -101,7 +128,12 @@ export default function SignInScreen() {
             {/* Sign In Button */}
             <TouchableOpacity style={styles.signInButton} activeOpacity={0.8}>
               <Text style={styles.signInButtonText}>Sign In</Text>
-              <Ionicons name="arrow-forward" size={20} color="#FFF" style={styles.arrowIcon} />
+              <Ionicons
+                name="arrow-forward"
+                size={20}
+                color="#FFF"
+                style={styles.arrowIcon}
+              />
             </TouchableOpacity>
 
             {/* Social Login Section */}
@@ -120,11 +152,16 @@ export default function SignInScreen() {
             {/* Footer Links */}
             <View style={styles.footer}>
               <Text style={styles.footerText}>
-                Don't have an account? <Link href="/signup" style={styles.linkText}>Sign Up.</Link>
+                Don't have an account?{" "}
+                <Link href="/signup" style={styles.linkText}>
+                  Sign Up.
+                </Link>
               </Text>
               <Link href="/forgot-password" asChild>
                 <TouchableOpacity>
-                  <Text style={styles.forgotPassword}>Forgot your password?</Text>
+                  <Text style={styles.forgotPassword}>
+                    Forgot your password?
+                  </Text>
                 </TouchableOpacity>
               </Link>
             </View>
@@ -147,17 +184,17 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   logoContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 30,
   },
   logoIcon: {
     width: 50,
     height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   logoPart: {
-    position: 'absolute',
+    position: "absolute",
     backgroundColor: PRIMARY_GREEN,
     borderRadius: 8,
   },
@@ -170,40 +207,40 @@ const styles = StyleSheet.create({
     height: 14,
   },
   headerContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 40,
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: TEXT_DARK,
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
     color: TEXT_LIGHT,
-    textAlign: 'center',
+    textAlign: "center",
   },
   formContainer: {
-    width: '100%',
+    width: "100%",
   },
   label: {
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
     color: TEXT_DARK,
     marginBottom: 10,
     marginTop: 20,
   },
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: INPUT_BG,
     borderRadius: 25,
     borderWidth: 1,
     borderColor: BORDER_COLOR,
     paddingHorizontal: 15,
     height: 56,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -225,9 +262,9 @@ const styles = StyleSheet.create({
     backgroundColor: PRIMARY_GREEN,
     borderRadius: 25,
     height: 56,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 35,
     shadowColor: PRIMARY_GREEN,
     shadowOffset: { width: 0, height: 4 },
@@ -236,31 +273,36 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   signInButtonText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   arrowIcon: {
     marginLeft: 10,
   },
   socialContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: 40,
     gap: 20,
   },
   socialIcon: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: 56,
+    height: 56,
+    borderRadius: 16,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 1,
     borderColor: BORDER_COLOR,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 0,
+    elevation: 0,
   },
   footer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 40,
   },
   footerText: {
@@ -270,11 +312,11 @@ const styles = StyleSheet.create({
   },
   linkText: {
     color: PRIMARY_GREEN,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   forgotPassword: {
     color: PRIMARY_GREEN,
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });
