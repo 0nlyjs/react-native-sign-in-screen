@@ -1,3 +1,9 @@
+
+
+https://github.com/user-attachments/assets/a335d238-085a-4274-9056-bc1f8cfd8972
+
+
+
 # React Native Sign In Screen 📱
 
 A polished, high-fidelity mobile authentication UI built with **React Native** and **Expo**. This project focuses on recreating a modern, professional design using only core components to maintain a lightweight and highly customizable codebase.
