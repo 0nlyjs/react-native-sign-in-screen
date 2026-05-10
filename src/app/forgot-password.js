@@ -1,64 +1,70 @@
-import React, { useState } from 'react';
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
+  ScrollView,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
-import { useRouter } from 'expo-router';
+  View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const PRIMARY_GREEN = '#82CD28';
-const BACKGROUND_LIGHT = '#F8F9FA';
-const TEXT_DARK = '#1A1A1A';
-const TEXT_LIGHT = '#7C7C7C';
-const INPUT_BG = '#FFFFFF';
-const BORDER_COLOR = '#E5E7EB';
+const PRIMARY_GREEN = "#82CD28";
+const BACKGROUND_LIGHT = "#F8F9FA";
+const TEXT_DARK = "#1A1A1A";
+const TEXT_LIGHT = "#7C7C7C";
+const INPUT_BG = "#FFFFFF";
+const BORDER_COLOR = "#E5E7EB";
 
 export default function ForgotPasswordScreen() {
   const router = useRouter();
-  const [selectedMethod, setSelectedMethod] = useState('email');
+  const insets = useSafeAreaInsets();
+  const [selectedMethod, setSelectedMethod] = useState("email");
 
   const methods = [
     {
-      id: 'email',
-      title: 'Email Address',
-      subtitle: 'Send via email address securely.',
-      icon: 'mail-outline',
-      type: 'ionicon',
+      id: "email",
+      title: "Email Address",
+      subtitle: "Send via email address securely.",
+      icon: "mail-outline",
+      type: "ionicon",
     },
     {
-      id: '2fa',
-      title: '2 Factor Authentication',
-      subtitle: 'Send via 2FA securely.',
-      icon: 'cellphone-lock',
-      type: 'material',
+      id: "2fa",
+      title: "2 Factor Authentication",
+      subtitle: "Send via 2FA securely.",
+      icon: "cellphone-lock",
+      type: "material",
     },
     {
-      id: 'google',
-      title: 'Google Authenticator',
-      subtitle: 'Send via authenticator securely.',
-      icon: 'lock-outline',
-      type: 'ionicon',
+      id: "google",
+      title: "Google Authenticator",
+      subtitle: "Send via authenticator securely.",
+      icon: "lock-closed-outline",
+      type: "ionicon",
     },
   ];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={[styles.container, { paddingTop: Math.max(insets.top, 20) }]}>
       <StatusBar style="dark" />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Back Button */}
-        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => router.back()}
+        >
           <Ionicons name="chevron-back" size={24} color={TEXT_DARK} />
         </TouchableOpacity>
 
         {/* Header */}
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Forgot Password</Text>
-          <Text style={styles.subtitle}>Select which methods you'd like to reset.</Text>
+          <Text style={styles.subtitle}>
+            Select which methods you'd like to reset.
+          </Text>
         </View>
 
         {/* Methods List */}
@@ -72,14 +78,30 @@ export default function ForgotPasswordScreen() {
               ]}
               onPress={() => setSelectedMethod(method.id)}
             >
-              <View style={[
-                styles.iconContainer,
-                selectedMethod === method.id ? styles.iconContainerActive : null
-              ]}>
-                {method.type === 'ionicon' ? (
-                  <Ionicons name={method.icon} size={24} color={selectedMethod === method.id ? PRIMARY_GREEN : TEXT_LIGHT} />
+              <View
+                style={[
+                  styles.iconContainer,
+                  selectedMethod === method.id
+                    ? styles.iconContainerActive
+                    : null,
+                ]}
+              >
+                {method.type === "ionicon" ? (
+                  <Ionicons
+                    name={method.icon}
+                    size={24}
+                    color={
+                      selectedMethod === method.id ? PRIMARY_GREEN : TEXT_LIGHT
+                    }
+                  />
                 ) : (
-                  <MaterialCommunityIcons name={method.icon} size={24} color={selectedMethod === method.id ? PRIMARY_GREEN : TEXT_LIGHT} />
+                  <MaterialCommunityIcons
+                    name={method.icon}
+                    size={24}
+                    color={
+                      selectedMethod === method.id ? PRIMARY_GREEN : TEXT_LIGHT
+                    }
+                  />
                 )}
               </View>
               <View style={styles.methodTextContainer}>
@@ -93,10 +115,15 @@ export default function ForgotPasswordScreen() {
         {/* Reset Button */}
         <TouchableOpacity style={styles.resetButton} activeOpacity={0.8}>
           <Text style={styles.resetButtonText}>Reset Password</Text>
-          <Ionicons name="arrow-forward" size={20} color="#FFF" style={styles.arrowIcon} />
+          <Ionicons
+            name="arrow-forward"
+            size={20}
+            color="#FFF"
+            style={styles.arrowIcon}
+          />
         </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -115,11 +142,11 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 22.5,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 30,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
@@ -130,7 +157,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: TEXT_DARK,
     marginBottom: 8,
   },
@@ -142,14 +169,14 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   methodCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF",
     padding: 16,
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: 'transparent',
-    shadowColor: '#000',
+    borderColor: "transparent",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 10,
@@ -157,26 +184,26 @@ const styles = StyleSheet.create({
   },
   methodCardActive: {
     borderColor: PRIMARY_GREEN,
-    backgroundColor: '#F7FFF0',
+    backgroundColor: "#F7FFF0",
   },
   iconContainer: {
     width: 50,
     height: 50,
     borderRadius: 15,
-    backgroundColor: '#F3F4F6',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#F3F4F6",
+    justifyContent: "center",
+    alignItems: "center",
     marginRight: 16,
   },
   iconContainerActive: {
-    backgroundColor: '#E7F6D8',
+    backgroundColor: "#E7F6D8",
   },
   methodTextContainer: {
     flex: 1,
   },
   methodTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: TEXT_DARK,
     marginBottom: 4,
   },
@@ -188,9 +215,9 @@ const styles = StyleSheet.create({
     backgroundColor: PRIMARY_GREEN,
     borderRadius: 25,
     height: 56,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 40,
     shadowColor: PRIMARY_GREEN,
     shadowOffset: { width: 0, height: 4 },
@@ -199,9 +226,9 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   resetButtonText: {
-    color: '#FFF',
+    color: "#FFF",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   arrowIcon: {
     marginLeft: 10,
